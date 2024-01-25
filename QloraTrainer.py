@@ -102,7 +102,10 @@ class QloraTrainer:
     def merge_and_save(self):
         """ Merge base model and adapter, save to disk """
         # Cannot merge when base model loaded in 8-bit/4-bit mode, so load separately
+        print("Hello")
         model_id = self.config["base_model"]
+
+        print("Hiii")
         if "model_family" in self.config and self.config["model_family"] == "llama":
             base_model = LlamaForCausalLM.from_pretrained(model_id, device_map="cpu")
         else:
