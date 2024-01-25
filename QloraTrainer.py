@@ -108,13 +108,19 @@ class QloraTrainer:
         else:
             base_model = AutoModelForCausalLM.from_pretrained(model_id, device_map="cpu")
 
+        print("Progress saving model")
         adapter_save_path = f"{self.config['model_output_dir']}/{self.config['model_name']}_adapter"
         model = PeftModel.from_pretrained(base_model, adapter_save_path)
 
+        print("Progress saving model 2")
         self.merged_model = model.merge_and_unload()  # note it's on CPU, don't run inference on it
 
         model_save_path = f"{self.config['model_output_dir']}/{self.config['model_name']}"
+
+        print("Progress saving model 3")
         self.merged_model.save_pretrained(model_save_path)
+
+        print("Progress saving model 4")
         self.tokenizer.save_pretrained(model_save_path)
 
     def push_to_hub(self):
