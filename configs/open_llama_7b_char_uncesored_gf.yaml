@@ -1,5 +1,5 @@
 model_name: open_llama_7b_qlora_uncensored_gf
-base_model: openlm-research/open_llama_7b
+base_model: georgesung/open_llama_7b_qlora_uncensored
 model_family: llama  # if unspecified will use AutoModelForCausalLM/AutoTokenizer
 model_context_window: 2048  # if unspecified will use tokenizer.model_max_length
 data:
